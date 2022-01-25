@@ -62,7 +62,7 @@ function Title({ children, tag }) {
 // export default HomePage;
 
 export default function PaginaInicial() {
-  const username = "megaman";
+  const username = "sergjun";
 
   return (
     <>
@@ -127,8 +127,8 @@ export default function PaginaInicial() {
               textFieldColors={{
                 neutral: {
                   textColor: appConfig.theme.colors.neutrals[200],
-                  mainColor: appConfig.theme.colors.neutrals[900],
-                  mainColorHighlight: appConfig.theme.colors.primary[500],
+                  mainColor: appConfig.theme.colors.neutrals[999],
+                  mainColorHighlight: appConfig.theme.colors.primary[400],
                   backgroundColor: appConfig.theme.colors.neutrals[800],
                 },
               }}
@@ -137,11 +137,14 @@ export default function PaginaInicial() {
               type="submit"
               label="Entrar"
               fullWidth
+              styleSheet={{
+                border: "1px solid",
+              }}
               buttonColors={{
-                contrastColor: appConfig.theme.colors.neutrals["000"],
-                mainColor: appConfig.theme.colors.primary[500],
-                mainColorLight: appConfig.theme.colors.primary[400],
-                mainColorStrong: appConfig.theme.colors.primary[600],
+                mainColor: appConfig.theme.colors.primary[300],
+                mainColorLight: appConfig.theme.colors.primary[200],
+                mainColorStrong: appConfig.theme.colors.primary[400],
+                contrastColor: appConfig.theme.colors.neutrals[100],
               }}
             />
           </Box>
