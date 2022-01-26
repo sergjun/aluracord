@@ -1,36 +1,7 @@
 import { Box, Button, Text, TextField, Image } from "@skynexui/components";
+import { useState } from "react";
+import { useRouter } from "next/router";
 import appConfig from "../config.json";
-
-function GlobalStyle() {
-  return (
-    <style global jsx>{`
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        list-style: none;
-      }
-      body {
-        font-family: "Open Sans", sans-serif;
-      }
-      /* App fit Height */
-      html,
-      body,
-      #__next {
-        min-height: 100vh;
-        display: flex;
-        flex: 1;
-      }
-      #__next {
-        flex: 1;
-      }
-      #__next > * {
-        flex: 1;
-      }
-      /* ./App fit Height */
-    `}</style>
-  );
-}
 
 function Title({ children, tag }) {
   const Tag = tag || "h1";
@@ -49,24 +20,12 @@ function Title({ children, tag }) {
   );
 }
 
-// function HomePage() {
-//   return (
-//     <div>
-//       <GlobalStyles />
-//       <Title tag="h1">vamo que vamo caraio</Title>
-//       <h2>discord wannabe</h2>
-//     </div>
-//   );
-// }
-
-// export default HomePage;
-
 export default function PaginaInicial() {
-  const username = "sergjun";
+  const [username, setUsername] = useState("");
+  const router = useRouter();
 
   return (
     <>
-      <GlobalStyle />
       <Box
         styleSheet={{
           display: "flex",
@@ -101,6 +60,11 @@ export default function PaginaInicial() {
           {/* Formulário */}
           <Box
             as="form"
+            onSubmit={(e) => {
+              e.preventDefault();
+              router.push("/chat");
+              console.log("submited");
+            }}
             styleSheet={{
               display: "flex",
               flexDirection: "column",
@@ -132,6 +96,7 @@ export default function PaginaInicial() {
                   backgroundColor: appConfig.theme.colors.neutrals[800],
                 },
               }}
+              onChange={(e) => setUsername(e.target.value)}
             />
             <Button
               type="submit"
